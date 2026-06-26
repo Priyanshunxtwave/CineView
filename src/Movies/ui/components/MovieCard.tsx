@@ -16,8 +16,7 @@ export const MovieCard = ({ movie, isInWatchlist, onToggleWatchlist }: MovieCard
   return (
     <Link
       to={`/movie/${movie.id}`}
-      className="group relative w-36 shrink-0 cursor-pointer overflow-hidden rounded-xl border border-slate-800 bg-slate-900 transition-transform duration-300 hover:-translate-y-1 hover:border-slate-700 hover:shadow-[0_8px_30px_rgb(0,0,0,0.5)] md:w-44 lg:w-52"
-    >
+      className="group relative w-36 shrink-0 cursor-pointer overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 transition-transform duration-300 hover:-translate-y-1 hover:border-slate-400 dark:hover:border-slate-700 hover:shadow-lg md:w-44 lg:w-52"    >
       {/* Enforce a strict standard movie poster aspect ratio (2:3) */}
       <div className="aspect-2/3 w-full">
         <ImageWithFallback

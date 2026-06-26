@@ -1,0 +1,17 @@
+{
+    "title": "Ajustes",
+    "language": "Idioma",
+    "region": "Región",
+    "theme": "Tema",
+    "themeLight": "Claro",
+    "themeDark": "Oscuro",
+    "languageOptions": {
+      "en": "Inglés",
+      "es": "Español"
+    },
+    "regionOptions": {
+      "US": "Estados Unidos",
+      "IN": "India",
+      "ES": "España"
+    }
+  }

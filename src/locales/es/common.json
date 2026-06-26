@@ -1,0 +1,18 @@
+{
+    "appName": "CineView",
+    "search": "Buscar",
+    "settings": "Ajustes",
+    "logout": "Cerrar sesión",
+    "retry": "Reintentar",
+    "loading": "Cargando...",
+    "notFound": "No encontrado.",
+    "close": "Cerrar",
+    "unknownYear": "Año desconocido",
+    "routeNotFound": "404 - Ruta no encontrada",
+    "watchlistPlaceholder": "Marcador de lista de seguimiento",
+    "listsPlaceholder": "Marcador de listas",
+    "listDetailPlaceholder": "Marcador de detalle de lista",
+    "episodeCount_one": "{{count}} episodio",
+    "episodeCount_other": "{{count}} episodios",
+    "seasonLabel": "Temporada {{number}}"
+  }

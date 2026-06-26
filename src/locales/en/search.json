@@ -1,0 +1,12 @@
+{
+    "placeholder": "Search for movies or TV shows...",
+    "recentSearches": "Recent searches",
+    "clearAll": "Clear all",
+    "searching": "Searching...",
+    "noResults": "No results found.",
+    "groups": {
+      "movies": "Movies",
+      "tvShows": "TV Shows",
+      "people": "People"
+    }
+  }

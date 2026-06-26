@@ -1,4 +1,6 @@
 import { z } from 'zod';
+import { preferencesStore } from '../../Preferences/data/preferencesStore';
+
 import { SearchResponseSchema, SearchResult } from '../../Search/core/searchSchemas';
 import {
   Movie,
@@ -32,7 +34,9 @@ const fetchFromTmdb = async <T>(endpoint: string, schema: z.ZodSchema<T>): Promi
 
   const url = new URL(`${BASE_URL}${endpoint}`);
   url.searchParams.append('api_key', API_KEY);
-  url.searchParams.append('language', 'en-US');
+  url.searchParams.append('language', preferencesStore.tmdbLanguage);
+  url.searchParams.append('region', preferencesStore.region);
+
 
   const response = await fetch(url.toString());
 

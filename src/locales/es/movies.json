@@ -1,0 +1,22 @@
+{
+    "popularMovies": "Películas populares",
+    "trendingThisWeek": "Tendencias de la semana",
+    "filteredPopularMovies": "Películas populares filtradas",
+    "filteredTrendingMovies": "Tendencias filtradas",
+    "failedToLoadContent": "No se pudo cargar el contenido.",
+    "noMoviesInCategory": "No se encontraron películas en esta categoría.",
+    "criticalPopularFailure": "Error crítico al renderizar la fila Popular.",
+    "criticalTrendingFailure": "Error crítico al renderizar la fila Tendencias.",
+    "watchTrailer": "Ver tráiler",
+    "addToWatchlist": "+ Mi lista",
+    "loadingMovieDetails": "Cargando detalles de la película...",
+    "movieNotFound": "Película no encontrada.",
+    "similarMovies": "Películas similares",
+    "cast": "Reparto",
+    "loadingShow": "Cargando serie...",
+    "seasons": "Temporadas",
+    "loadingSeason": "Cargando temporada...",
+    "loadingEpisodes": "Cargando episodios...",
+    "noEpisodes": "No se encontraron episodios para esta temporada.",
+    "allGenres": "Todos los géneros"
+  }

@@ -1,0 +1,17 @@
+{
+    "title": "Settings",
+    "language": "Language",
+    "region": "Region",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "languageOptions": {
+      "en": "English",
+      "es": "Spanish"
+    },
+    "regionOptions": {
+      "US": "United States",
+      "IN": "India",
+      "ES": "Spain"
+    }
+  }

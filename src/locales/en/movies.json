@@ -1,0 +1,22 @@
+{
+    "popularMovies": "Popular Movies",
+    "trendingThisWeek": "Trending This Week",
+    "filteredPopularMovies": "Filtered Popular Movies",
+    "filteredTrendingMovies": "Filtered Trending Movies",
+    "failedToLoadContent": "Failed to load content.",
+    "noMoviesInCategory": "No movies found in this category.",
+    "criticalPopularFailure": "Critical failure rendering Popular row.",
+    "criticalTrendingFailure": "Critical failure rendering Trending row.",
+    "watchTrailer": "Watch Trailer",
+    "addToWatchlist": "+ Watchlist",
+    "loadingMovieDetails": "Loading movie details...",
+    "movieNotFound": "Movie not found.",
+    "similarMovies": "Similar Movies",
+    "cast": "Cast",
+    "loadingShow": "Loading Show...",
+    "seasons": "Seasons",
+    "loadingSeason": "Loading season...",
+    "loadingEpisodes": "Loading episodes...",
+    "noEpisodes": "No episodes found for this season.",
+    "allGenres": "All Genres"
+  }

@@ -23,9 +23,9 @@ export const ResultGroup = ({ title, items }: ResultGroupProps) => {
 
   return (
     <section className="mb-10">
-      <h2 className="mb-4 text-xl font-bold text-white">{title}</h2>
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5">
-        {items.map((item) => {
+      <h2 className="mb-4 text-xl font-bold text-slate-900 dark:text-white">{title}</h2>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
+                {items.map((item) => {
           const imagePath = getImagePath(item);
           const link = getLink(item);
 
@@ -36,8 +36,10 @@ export const ResultGroup = ({ title, items }: ResultGroupProps) => {
                 alt={getLabel(item)}
                 className="h-64 w-full object-cover"
               />
-              <div className="p-3">
-                <h4 className="truncate text-sm font-bold text-white">{getLabel(item)}</h4>
+              <div className="overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+
+              <h4 className="truncate text-sm font-bold text-slate-900 dark:text-white">{getLabel(item)}</h4>
+
                 {item.vote_average !== undefined && item.media_type !== 'person' && (
                   <span className="text-xs text-yellow-500">★ {item.vote_average.toFixed(1)}</span>
                 )}
