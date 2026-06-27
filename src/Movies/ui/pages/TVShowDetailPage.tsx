@@ -5,6 +5,7 @@ import { preferencesStore } from '../../../Preferences';
 import { tmdbService } from '../../../Movies/data/tmdbService';
 import { ImageWithFallback } from '../../../Common/ui/components/ImageWithFallback/ImageWithFallback';
 import { TVShowDetail, SeasonSummary } from '../../core/movieSchemas';
+import { WatchlistActionButton, snapshotFromTVShow } from '../../../Collection';
 
 export const TVShowDetailPage = () => {
   const { id } = useParams();
@@ -63,9 +64,14 @@ export const TVShowDetailPage = () => {
           className="w-48 rounded-xl shadow-lg"
         />
         <div>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">{show.name}</h1>
-          <p className="text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed mb-6">{show.overview}</p>
-
+        <div className="mb-6">
+            <WatchlistActionButton
+              mediaType="tv"
+              mediaId={show.id}
+              snapshot={snapshotFromTVShow(show)}
+              variant="detail"
+            />
+          </div>
           <h3 className="text-lg font-bold mb-3 text-slate-500 dark:text-slate-400 uppercase tracking-wider">Seasons</h3>
           <div className="flex flex-wrap gap-2">
             {show.seasons

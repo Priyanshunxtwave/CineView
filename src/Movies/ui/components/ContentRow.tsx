@@ -1,3 +1,5 @@
+import { observer } from 'mobx-react-lite';
+import { watchlistStore, snapshotFromMovie } from '../../../Collection';
 import { Movie } from '../../core/movieSchemas';
 import { MovieCard } from './MovieCard';
 
@@ -9,7 +11,7 @@ interface ContentRowProps {
   onRetry: () => void;
 }
 
-export const ContentRow = ({ title, items, isLoading, error, onRetry }: ContentRowProps) => {
+export const ContentRow = observer(({ title, items, isLoading, error, onRetry }: ContentRowProps) => {
   if (error) {
     return (
       <div className="w-full px-4 sm:px-6 lg:px-8 my-12">
@@ -55,12 +57,14 @@ export const ContentRow = ({ title, items, isLoading, error, onRetry }: ContentR
             <MovieCard
               key={movie.id}
               movie={movie}
-              isInWatchlist={false}
-              onToggleWatchlist={() => {}}
+              isInWatchlist={watchlistStore.isInWatchlist('movie', movie.id)}
+              onToggleWatchlist={() =>
+                watchlistStore.toggle('movie', movie.id, snapshotFromMovie(movie))
+              }
             />
           ))}
         </div>
       )}
     </div>
   );
-};
+});

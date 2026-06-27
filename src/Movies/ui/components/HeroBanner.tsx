@@ -1,5 +1,7 @@
 import { Movie } from '../../core/movieSchemas';
 import { ImageWithFallback } from '../../../Common/ui/components/ImageWithFallback/ImageWithFallback';
+import { WatchlistActionButton } from '../../../Collection';
+import { snapshotFromMovie } from '../../../Collection';
 
 interface HeroBannerProps {
   movie: Movie;
@@ -50,12 +52,12 @@ export const HeroBanner = ({ movie, onTrailerClick }: HeroBannerProps) => {
               ▶ Watch Trailer
             </button>
           )}
-          <button
-            type="button"
-            className="px-6 py-2.5 bg-slate-800/80 hover:bg-slate-700 text-white text-sm font-semibold rounded-full transition-all border border-slate-700 backdrop-blur-sm flex items-center gap-2"
-          >
-            + Watchlist
-          </button>
+          <WatchlistActionButton
+  mediaType="movie"
+  mediaId={movie.id}
+  snapshot={snapshotFromMovie(movie)}
+  variant="banner"
+/>
         </div>
       </div>
     </div>

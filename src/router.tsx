@@ -13,6 +13,8 @@ import { MovieDetailPage } from './Movies/ui/pages/MovieDetailPage';
 import { TVShowDetailPage } from './Movies/ui/pages/TVShowDetailPage';
 import { SeasonDetailPage } from './Movies/ui/pages/SeasonDetailPage';
 
+import { WatchlistPage } from './Collection';
+
 export const router = createBrowserRouter([
   {
     path: "/login",
@@ -30,6 +32,7 @@ export const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: "search", element: <SearchPage /> },
       { path: 'settings', element: <SettingsPage /> },
+      { path: 'watchlist', element: <WatchlistPage /> },
 
       // Movie Detail Route (Note: changed from "movies/:id" to "movie/:id" for cleaner RESTful URLs)
       { path: "movie/:id", element: <MovieDetailPage /> },
@@ -48,7 +51,7 @@ export const router = createBrowserRouter([
       },
       
       // Future Milestone Placeholders
-      { path: "watchlist", element: <div>Watchlist Placeholder</div> },
+      
       { path: "lists", element: <div>Lists Placeholder</div> },
       { path: "lists/:id", element: <div>List Detail Placeholder</div> },
       { path: "settings", element: <div>SettingsPage</div> },

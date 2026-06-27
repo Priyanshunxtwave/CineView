@@ -8,6 +8,7 @@ import { TrailerModal } from '../components/TrailerModal';
 import { CastCarousel } from './CastCarousel';
 import { ContentRow } from '../components/ContentRow';
 import { ImageWithFallback } from '../../../Common/ui/components/ImageWithFallback/ImageWithFallback';
+import { WatchlistActionButton, snapshotFromMovie } from '../../../Collection';
 
 export const MovieDetailPage = () => {
   const { id } = useParams();
@@ -111,15 +112,24 @@ export const MovieDetailPage = () => {
             {movie.overview}
           </p>
 
-          {videoKey && (
-            <button
-              type="button"
-              onClick={() => setIsModalOpen(true)}
-              className="rounded-lg bg-blue-600 px-8 py-3 font-bold shadow-lg transition hover:bg-blue-500"
-            >
-              ▶ Watch Trailer
-            </button>
-          )}
+          <div className="flex flex-wrap gap-4">
+            <WatchlistActionButton
+              mediaType="movie"
+              mediaId={movie.id}
+              snapshot={snapshotFromMovie(movie)}
+              variant="detail"
+            />
+
+            {videoKey && (
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(true)}
+                className="rounded-lg bg-blue-600 px-8 py-3 font-bold shadow-lg transition hover:bg-blue-500"
+              >
+                ▶ Watch Trailer
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
