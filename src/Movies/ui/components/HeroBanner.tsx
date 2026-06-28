@@ -1,7 +1,10 @@
 import { Movie } from '../../core/movieSchemas';
 import { ImageWithFallback } from '../../../Common/ui/components/ImageWithFallback/ImageWithFallback';
-import { WatchlistActionButton } from '../../../Collection';
-import { snapshotFromMovie } from '../../../Collection';
+import {
+  WatchlistActionButton,
+  AddToListPopover,
+  snapshotFromMovie,
+} from '../../../Collection';
 
 interface HeroBannerProps {
   movie: Movie;
@@ -12,6 +15,8 @@ export const HeroBanner = ({ movie, onTrailerClick }: HeroBannerProps) => {
   const backdropUrl = movie.backdrop_path
     ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
     : undefined;
+
+  const snapshot = snapshotFromMovie(movie);
 
   return (
     <div className="relative w-full h-[70vh] min-h-[500px] flex items-end pb-16">
@@ -42,7 +47,7 @@ export const HeroBanner = ({ movie, onTrailerClick }: HeroBannerProps) => {
           {movie.overview}
         </p>
 
-        <div className="flex gap-4">
+        <div className="flex flex-wrap items-center gap-4">
           {onTrailerClick && (
             <button
               type="button"
@@ -52,12 +57,20 @@ export const HeroBanner = ({ movie, onTrailerClick }: HeroBannerProps) => {
               ▶ Watch Trailer
             </button>
           )}
+
           <WatchlistActionButton
-  mediaType="movie"
-  mediaId={movie.id}
-  snapshot={snapshotFromMovie(movie)}
-  variant="banner"
-/>
+            mediaType="movie"
+            mediaId={movie.id}
+            snapshot={snapshot}
+            variant="banner"
+          />
+
+          <AddToListPopover
+            mediaType="movie"
+            mediaId={movie.id}
+            snapshot={snapshot}
+            variant="detail"
+          />
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ import { TrailerModal } from '../components/TrailerModal';
 import { CastCarousel } from './CastCarousel';
 import { ContentRow } from '../components/ContentRow';
 import { ImageWithFallback } from '../../../Common/ui/components/ImageWithFallback/ImageWithFallback';
-import { WatchlistActionButton, snapshotFromMovie } from '../../../Collection';
+import { WatchlistActionButton, AddToListPopover, snapshotFromMovie } from '../../../Collection';
 
 export const MovieDetailPage = () => {
   const { id } = useParams();
@@ -86,6 +86,8 @@ export const MovieDetailPage = () => {
     ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
     : undefined;
 
+  const snapshot = snapshotFromMovie(movie);
+
   return (
     <div className="pb-12 text-slate-900 dark:text-white">
       <div className="relative h-[60vh] w-full border-b border-slate-200 dark:border-gray-800 bg-slate-100 dark:bg-gray-900">
@@ -112,11 +114,18 @@ export const MovieDetailPage = () => {
             {movie.overview}
           </p>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap items-center gap-4">
             <WatchlistActionButton
               mediaType="movie"
               mediaId={movie.id}
-              snapshot={snapshotFromMovie(movie)}
+              snapshot={snapshot}
+              variant="detail"
+            />
+
+            <AddToListPopover
+              mediaType="movie"
+              mediaId={movie.id}
+              snapshot={snapshot}
               variant="detail"
             />
 

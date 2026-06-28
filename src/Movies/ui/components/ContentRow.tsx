@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { watchlistStore, snapshotFromMovie } from '../../../Collection';
+import { collectionStore, snapshotFromMovie } from '../../../Collection';
 import { Movie } from '../../core/movieSchemas';
 import { MovieCard } from './MovieCard';
 
@@ -57,9 +57,9 @@ export const ContentRow = observer(({ title, items, isLoading, error, onRetry }:
             <MovieCard
               key={movie.id}
               movie={movie}
-              isInWatchlist={watchlistStore.isInWatchlist('movie', movie.id)}
+              isInWatchlist={collectionStore.isInWatchlist('movie', movie.id)}
               onToggleWatchlist={() =>
-                watchlistStore.toggle('movie', movie.id, snapshotFromMovie(movie))
+                collectionStore.toggleWatchlist('movie', movie.id, snapshotFromMovie(movie))
               }
             />
           ))}

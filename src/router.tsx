@@ -12,8 +12,8 @@ import { SettingsPage } from './Settings/ui/pages/SettingsPage';
 import { MovieDetailPage } from './Movies/ui/pages/MovieDetailPage';
 import { TVShowDetailPage } from './Movies/ui/pages/TVShowDetailPage';
 import { SeasonDetailPage } from './Movies/ui/pages/SeasonDetailPage';
+import { WatchlistPage, MyListsPage, ListDetailPage } from './Collection';
 
-import { WatchlistPage } from './Collection';
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +33,8 @@ export const router = createBrowserRouter([
       { path: "search", element: <SearchPage /> },
       { path: 'settings', element: <SettingsPage /> },
       { path: 'watchlist', element: <WatchlistPage /> },
+      { path: 'lists', element: <MyListsPage /> },
+      { path: 'lists/:id', element: <ListDetailPage /> },
 
       // Movie Detail Route (Note: changed from "movies/:id" to "movie/:id" for cleaner RESTful URLs)
       { path: "movie/:id", element: <MovieDetailPage /> },
@@ -54,7 +56,6 @@ export const router = createBrowserRouter([
       
       { path: "lists", element: <div>Lists Placeholder</div> },
       { path: "lists/:id", element: <div>List Detail Placeholder</div> },
-      { path: "settings", element: <div>SettingsPage</div> },
     ],
   },
 ]);

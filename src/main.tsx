@@ -8,7 +8,7 @@ import { preferencesStore } from './Preferences';
 import './Preferences/core/i18n';
 import i18n from './Preferences/core/i18n';
 import './index.css';
-import { watchlistStore } from './Collection';
+import { collectionStore } from './Collection';
 
 
 validateEnv();
@@ -16,7 +16,7 @@ validateEnv();
 // 1. Load theme + language + region from localStorage / OS
 preferencesStore.init();
 // after preferencesStore.init();
-watchlistStore.init();
+collectionStore.init();
 // 2. Keep i18n in sync when language changes in MobX store
 reaction(
   () => preferencesStore.language,

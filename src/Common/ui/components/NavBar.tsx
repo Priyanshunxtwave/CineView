@@ -1,7 +1,7 @@
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { sessionService } from '../../../Auth/data/sessionService';
 import { observer } from 'mobx-react-lite';
-import { watchlistStore } from '../../../Collection';
+import { collectionStore } from '../../../Collection';
 
 export const Navbar = observer (() => {
   const navigate = useNavigate();
@@ -29,11 +29,14 @@ export const Navbar = observer (() => {
         <Link to="/search" className={linkClass('/search')}>
           Search
         </Link>
+        <Link to="/lists" className={linkClass('/lists')}>
+  Lists
+</Link>
         <Link to="/watchlist" className={`${linkClass('/watchlist')} relative`}>
         Watchlist
-        {watchlistStore.count > 0 && (
+        {collectionStore.count > 0 && (
           <span className="ml-1.5 inline-flex min-w-5 items-center justify-center rounded-full bg-indigo-600 px-1.5 py-0.5 text-xs font-bold text-white">
-            {watchlistStore.count}
+            {collectionStore.count}
           </span>
         )}
       </Link>

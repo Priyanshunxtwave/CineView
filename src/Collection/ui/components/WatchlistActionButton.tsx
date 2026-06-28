@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { watchlistStore } from '../../data/watchlistStore';
+import { collectionStore } from '../../data/collectionStore';
 import { MediaSnapshot, MediaType } from '../../core/collectionSchemas';
 
 interface WatchlistActionButtonProps {
@@ -11,7 +11,8 @@ interface WatchlistActionButtonProps {
 
 export const WatchlistActionButton = observer(
   ({ mediaType, mediaId, snapshot, variant = 'detail' }: WatchlistActionButtonProps) => {
-    const inList = watchlistStore.isInWatchlist(mediaType, mediaId);
+    const inList = collectionStore.isInWatchlist(mediaType, mediaId);
+    const hasNote = collectionStore.hasWatchlistNote(mediaType, mediaId);
 
     const base =
       variant === 'banner'
@@ -31,10 +32,17 @@ export const WatchlistActionButton = observer(
     return (
       <button
         type="button"
-        onClick={() => watchlistStore.toggle(mediaType, mediaId, snapshot)}
+        onClick={() => collectionStore.toggleWatchlist(mediaType, mediaId, snapshot)}
         className={`${base} ${inList ? activeClass : inactiveClass}`}
       >
-        {inList ? '✓ In Watchlist' : '+ Watchlist'}
+        {inList ? (
+          <>
+            ✓ In Watchlist
+            {hasNote && <span aria-label="Has note"> 📝</span>}
+          </>
+        ) : (
+          '+ Watchlist'
+        )}
       </button>
     );
   }

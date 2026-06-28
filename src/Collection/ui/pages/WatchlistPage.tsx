@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { WATCH_STATUS_LABELS, WATCH_STATUS_ORDER } from '../../core/collectionConstants';
 import { WatchStatus } from '../../core/collectionSchemas';
-import { watchlistStore } from '../../data/watchlistStore';
+import { collectionStore } from '../../data/collectionStore';
 import { WatchlistEntryCard } from '../components/WatchlistEntryCard';
 
 type StatusFilter = 'all' | WatchStatus;
@@ -14,8 +14,8 @@ export const WatchlistPage = observer(() => {
 
   const list =
     statusFilter === 'all'
-      ? [...watchlistStore.entries]
-      : watchlistStore.entries.filter((e) => e.status === statusFilter);
+    ? [...collectionStore.watchlist]
+    : collectionStore.watchlist.filter((e) => e.status === statusFilter);
 
   const filteredAndSorted = [...list].sort((a, b) => {
     if (sortBy === 'date_added') {
@@ -28,11 +28,11 @@ export const WatchlistPage = observer(() => {
   });
 
   const tabs: { key: StatusFilter; label: string; count: number }[] = [
-    { key: 'all', label: 'All', count: watchlistStore.count },
+    { key: 'all', label: 'All', count: collectionStore.count },
     ...WATCH_STATUS_ORDER.map((status) => ({
       key: status as StatusFilter,
       label: WATCH_STATUS_LABELS[status],
-      count: watchlistStore.countsByStatus[status],
+      count: collectionStore.countsByStatus[status],
     })),
   ];
 
@@ -77,7 +77,7 @@ export const WatchlistPage = observer(() => {
         ))}
       </div>
 
-      {watchlistStore.count === 0 ? (
+      {collectionStore.count === 0 ? (
         <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-12 text-center dark:border-slate-700 dark:bg-slate-900/50">
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">Your watchlist is empty</h2>
           <p className="mt-2 text-slate-600 dark:text-slate-400">
