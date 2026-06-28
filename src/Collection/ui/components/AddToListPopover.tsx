@@ -38,9 +38,11 @@ export const AddToListPopover = observer(
 
         {isOpen && (
           <div
-            className="absolute right-0 z-20 mt-2 w-56 rounded-xl border border-slate-200 bg-white p-3 shadow-lg dark:border-slate-700 dark:bg-slate-900"
-            onClick={(e) => e.stopPropagation()}
-          >
+          className={`absolute right-0 z-50 w-56 rounded-xl border border-slate-200 bg-white p-3 shadow-lg dark:border-slate-700 dark:bg-slate-900 ${
+            variant === 'card' ? 'bottom-full mb-2' : 'top-full mt-2'
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
             <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500">Add to list</p>
 
             {collectionStore.customLists.length === 0 ? (
@@ -51,10 +53,13 @@ export const AddToListPopover = observer(
                   key={list.id}
                   className="flex cursor-pointer items-center gap-2 rounded px-1 py-1 text-sm text-slate-800 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
-                  <input
+                                    <input
                     type="checkbox"
                     checked={collectionStore.isInList(list.id, mediaType, mediaId)}
-                    onChange={() => collectionStore.toggleListItem(list.id, mediaType, mediaId, snapshot)}
+                    onChange={(e) => {
+                      e.stopPropagation();
+                      collectionStore.toggleListItem(list.id, mediaType, mediaId, snapshot);
+                    }}
                   />
                   <span className="truncate">{list.name}</span>
                 </label>

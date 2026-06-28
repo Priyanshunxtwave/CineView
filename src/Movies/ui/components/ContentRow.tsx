@@ -33,7 +33,7 @@ export const ContentRow = observer(({ title, items, isLoading, error, onRetry }:
   }
 
   return (
-    <div className="w-full px-4 sm:px-6 lg:px-8 my-12 overflow-hidden">
+    <div className="w-full px-4 sm:px-6 lg:px-8 my-12 overflow-visible">
       <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mb-6 tracking-wide">
         {title}
       </h2>

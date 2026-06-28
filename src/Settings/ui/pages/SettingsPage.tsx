@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useNavigate } from 'react-router-dom';
 import { preferencesStore } from '../../../Preferences';
@@ -10,6 +11,18 @@ import type { AppLanguage, AppRegion, Theme } from '../../../Preferences/core/pr
 
 export const SettingsPage = observer(() => {
   const navigate = useNavigate();
+
+  // Draft values — not saved until user clicks Save
+  const [draftLanguage, setDraftLanguage] = useState<AppLanguage>(preferencesStore.language);
+  const [draftRegion, setDraftRegion] = useState<AppRegion>(preferencesStore.region);
+  const [draftTheme, setDraftTheme] = useState<Theme>(preferencesStore.theme);
+
+  const handleSave = () => {
+    preferencesStore.setLanguage(draftLanguage);
+    preferencesStore.setRegion(draftRegion);
+    preferencesStore.setTheme(draftTheme);
+    navigate('/');
+  };
 
   const handleLogout = () => {
     sessionService.logout();
@@ -26,7 +39,7 @@ export const SettingsPage = observer(() => {
     <div className="max-w-lg mx-auto p-6 space-y-8">
       <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Settings</h1>
 
-      {/* Language — affects login form + TMDB API, NOT rest of UI */}
+      {/* Language */}
       <section className={sectionClass}>
         <label htmlFor="language" className={labelClass}>
           Language
@@ -36,8 +49,8 @@ export const SettingsPage = observer(() => {
         </p>
         <select
           id="language"
-          value={preferencesStore.language}
-          onChange={(e) => preferencesStore.setLanguage(e.target.value as AppLanguage)}
+          value={draftLanguage}
+          onChange={(e) => setDraftLanguage(e.target.value as AppLanguage)}
           className={selectClass}
         >
           {SUPPORTED_LANGUAGES.map((opt) => (
@@ -48,15 +61,15 @@ export const SettingsPage = observer(() => {
         </select>
       </section>
 
-      {/* Region — affects TMDB availability/ranking */}
+      {/* Region */}
       <section className={sectionClass}>
         <label htmlFor="region" className={labelClass}>
           Region
         </label>
         <select
           id="region"
-          value={preferencesStore.region}
-          onChange={(e) => preferencesStore.setRegion(e.target.value as AppRegion)}
+          value={draftRegion}
+          onChange={(e) => setDraftRegion(e.target.value as AppRegion)}
           className={selectClass}
         >
           {SUPPORTED_REGIONS.map((opt) => (
@@ -75,9 +88,9 @@ export const SettingsPage = observer(() => {
             <button
               key={theme}
               type="button"
-              onClick={() => preferencesStore.setTheme(theme)}
+              onClick={() => setDraftTheme(theme)}
               className={`px-5 py-2 rounded-lg font-medium transition ${
-                preferencesStore.theme === theme
+                draftTheme === theme
                   ? 'bg-blue-600 text-white'
                   : 'bg-slate-200 text-slate-800 dark:bg-gray-700 dark:text-white hover:opacity-90'
               }`}
@@ -87,6 +100,15 @@ export const SettingsPage = observer(() => {
           ))}
         </div>
       </section>
+
+      {/* Save — applies draft + goes home */}
+      <button
+        type="button"
+        onClick={handleSave}
+        className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg transition"
+      >
+        Save
+      </button>
 
       {/* Logout */}
       <button
